@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import SingeleCard from './components/SingleCard';
-
-const cardImages =[
-  {"src": '/img/helmet-1.png', matched: false},
-  {"src": '/img/potion-1.png', matched: false},
-  {"src": '/img/shield-1.png', matched: false},
-  {"src": '/img/sword-1.png', matched: false},
-  {"src": '/img/ring-1.png', matched: false},
-  {"src": '/img/scroll-1.png', matched: false},
-]
-function App() {
+import { React, useEffect, useState } from 'react';
+import SingeleCard from '../components/SingleCard';
+export default function MemoryGame(){
+  const cardImages =[
+    {"src": '/img/helmet-1.png', matched: false},
+    {"src": '/img/potion-1.png', matched: false},
+    {"src": '/img/shield-1.png', matched: false},
+    {"src": '/img/sword-1.png', matched: false},
+    {"src": '/img/ring-1.png', matched: false},
+    {"src": '/img/scroll-1.png', matched: false},
+  ]
 
   const [cards, setCards] = useState([]);
   const [turns, setTurns]= useState(0);
@@ -71,26 +69,22 @@ function App() {
  useEffect(()=>{
     shuffleCards();
  },[])
-  return (
-    <div className="App">
-     <h1>Magic Match</h1>
-     <button onClick={shuffleCards}>New Game</button>
-     <div className="card-grid">
-       {
-         cards.map(card=>(
-          <SingeleCard 
-            key={card.id} 
-            card={card}
-            handleChoice={handleChoice}
-            flipped ={card===choiceOne||card===choiceTwo||card.matched}
-            disabled={disabled}
-            />
-         ))
-       }
-     </div>
-     <p>Turn {turns}</p>
-    </div>
-  );
+ return (<div className="App">
+ <h1>Magic Match</h1>
+ <button onClick={shuffleCards}>New Game</button>
+ <div className="card-grid">
+   {
+     cards.map(card=>(
+      <SingeleCard
+        key={card.id} 
+        card={card}
+        handleChoice={handleChoice}
+        flipped ={card===choiceOne||card===choiceTwo||card.matched}
+        disabled={disabled}
+        />
+     ))
+   }
+ </div>
+ <p>Turn {turns}</p>
+</div>)
 }
-
-export default App;
