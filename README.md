@@ -1,6 +1,6 @@
 # Getting Started with Game App
 
-you guys.. can play online my simple game
+Hi guys.. can play online my simple game
 https://game.yusoffdev.com/
 ## Screenshot game
 
